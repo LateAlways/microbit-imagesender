@@ -1,7 +1,6 @@
 class EncodingUtils {
     static encodeImagedata(imageData: boolean[][]): string {
         let imagedata = imageData.length + ";" + imageData[0].length + ";";
-        console.log(imagedata);
         for (let y = 0; y < imageData[0].length; y++) {
             if(y !== 0) imagedata = imagedata.concat("-");
 
@@ -9,7 +8,6 @@ class EncodingUtils {
                 imagedata = imagedata.concat(imageData[x][y] ? "1" : "0");
             }
         }
-        console.log(imagedata);
         return imagedata
     }
 

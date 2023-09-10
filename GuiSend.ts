@@ -18,6 +18,7 @@ class GuiSend extends Gui {
             # . # . .
             . # . . .
             `);
+            if(!this.sending) {
             basic.showLeds(`
             . # # # .
             # . . . #
@@ -25,6 +26,7 @@ class GuiSend extends Gui {
             . . . . .
             . . # . .
             `)
+            }
         }
     }
 
@@ -53,8 +55,10 @@ class GuiSend extends Gui {
             basic.pause(timeToWait)
         }
         basic.clearScreen();
-        let imageData = EncodingUtils.encodeImagedata(this.imageData);
-        radio.sendString(imageData)
+        let imageData = EncodingUtils.encodeImagedata(this.imageData).split("-");
+        radio.sendString("start");
+        imageData.forEach(d => radio.sendString(d));
+        radio.sendString("end");
         basic.showIcon(IconNames.Yes);
         basic.pause(500);
         this.screen.setGui(this.screen.guichoice);

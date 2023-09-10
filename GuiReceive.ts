@@ -3,12 +3,19 @@ class GuiReceive extends Gui {
     broadcastTimer: Timer;
     counter = 0;
     received: boolean = false;
+    message: string = "";
     
     constructor(screen: Screen) {
         super(screen, GuiName.RECEIVE);
         radio.onReceivedString((data: string) => {
             if(this.screen.getGui() === GuiName.RECEIVE) {
-                this.onReceive(data)
+                if(data !== "start" && data !== "end") {
+                    this.message = this.message + data + "-";
+                }
+                if(data === "end") {
+                    this.onReceive(this.message.substr(0, this.message.length-1));
+                    this.message = "";
+                }
             }
         })
         this.timer = new Timer();
@@ -19,14 +26,20 @@ class GuiReceive extends Gui {
     reset() {
         this.timer.reset();
         this.counter = 0;
+        this.message = "";
         this.received = false;
     }
 
     onReceive(data: string) {
         this.received = true;
         basic.clearScreen();
-        basic.showIcon(IconNames.Yes);
-        console.log(data);
+        basic.showLeds(`
+        . # . # .
+        . # . # .
+        . # . # .
+        . . . . .
+        . # . # .
+        `);
         let imageData = EncodingUtils.decodeImageData(data);
         GuiDesign.renderFromImageData(imageData);
     }
