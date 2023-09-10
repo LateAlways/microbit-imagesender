@@ -1,0 +1,31 @@
+{
+    "name": "ImageSender",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*"
+    },
+    "files": [
+        "main.ts",
+        "Gui.ts",
+        "Screen.ts",
+        "GuiDesign.ts",
+        "GuiChoice.ts",
+        "GuiReceive.ts",
+        "GuiSend.ts",
+        "EncodingUtils.ts",
+        "Timer.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "6.0.18",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
+}
