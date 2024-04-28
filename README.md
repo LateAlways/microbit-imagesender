@@ -1,5 +1,5 @@
 
-> Ouvrir cette page à [https://latealways.github.io/microbit-imagesender/](https://latealways.github.io/microbit-imagesender/)
+> Ouvrir cette page à [https://latealways.is-a.dev/microbit-imagesender/](https://latealways.is-a.dev/microbit-imagesender/)
 
 ## Utiliser comme extension
 
